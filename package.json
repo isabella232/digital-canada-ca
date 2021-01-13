@@ -2,7 +2,6 @@
   "name": "digital-canada-ca",
   "version": "1.0.1",
   "description": "",
-  "main": "webpack.config.js",
   "dependencies": {
     "@babel/core": "^7.12.10",
     "babel-loader": "^8.2.2",
@@ -17,20 +16,17 @@
     "set-value": "^3.0.2",
     "sharp": "^0.25.4",
     "snyk": "^1.437.1",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.44.2"
+    "style-loader": "^0.23.1"
   },
   "devDependencies": {
-    "node-yaml": "^3.2.0",
-    "webpack-cli": "^3.3.11"
+    "node-yaml": "^3.2.0"
   },
   "scripts": {
-    "dev": "npm run process:images && webpack && hugo server -D",
+    "dev": "npm run process:images && hugo server -D",
     "process:images": "node util/processBlogImages && node util/processTeamImages",
-    "build": "npm run process:images && webpack && hugo",
-    "build_admin": "webpack --config webpack.config.js",
-    "build:stage": "webpack && hugo --environment staging",
-    "heroku-postbuild": "webpack && ./bin/hugo --environment staging",
+    "build": "npm run process:images && hugo",
+    "build:stage": "hugo --environment staging",
+    "heroku-postbuild": "./bin/hugo --environment staging",
     "stage-server": "node stage-server.js",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
